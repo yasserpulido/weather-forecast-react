@@ -7,19 +7,18 @@ const initialState = () => ({
   loading: false,
 });
 
-export const getNode = createAsyncThunk(
-  "node/getNode",
-  async (page: string) => {
-    const response = await fetch(
-      `https://api.themoviedb.org/4/list/8206970?page=${page}&api_key=5d34d9d23f930581162aeff03ad62f10`
-    );
-    const data = await response.json();
-    return data;
-  }
-);
+export const getNode = createAsyncThunk("node/getNode", async () => {
+  console.log("getNode");
+  const response = await fetch(
+    "http://api.openweathermap.org/data/2.5/forecast?q=buenos aires&units=metric&appid=8a533d060297c7bd8f875f76c8583cf6"
+  );
+  const data = await response.json();
+  console.log(data);
+  return data;
+});
 
 const nodeSlice = createSlice({
-  name: "node",
+  name: "weather",
   initialState: initialState() as Weather,
   reducers: {},
   extraReducers: (builder) => {
@@ -36,5 +35,5 @@ const nodeSlice = createSlice({
   },
 });
 
-export const selectNode = (state: RootState) => state.node;
+export const selectNode = (state: RootState) => state.weather;
 export default nodeSlice.reducer;

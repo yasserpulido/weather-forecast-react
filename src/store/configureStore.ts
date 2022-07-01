@@ -1,8 +1,8 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
-import node from "../reducers/weather";
+import weather from "../reducers/weather";
 
-const store = configureStore({ reducer: { node: node } });
+const store = configureStore({ reducer: { weather } });
 
 export type RootState = ReturnType<typeof store.getState>;
 

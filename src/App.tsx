@@ -1,26 +1,20 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect } from "react";
+import "./App.css";
+import { useAppDispatch, useAppSelector } from "./store/configureStore";
+import { getNode, selectNode } from "./reducers/weather";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+  const dispatch = useAppDispatch();
+  const weather = useAppSelector(selectNode);
+
+  useEffect(() => {
+    console.log("useEffect");
+    dispatch(getNode());
+  }, [dispatch]);
+
+  if (weather.loading) return <p>Loading...</p>;
+
+  return <div>{weather.data.city.name}</div>;
 }
 
 export default App;
