@@ -8,12 +8,10 @@ const initialState = () => ({
 });
 
 export const getNode = createAsyncThunk("node/getNode", async () => {
-  console.log("getNode");
   const response = await fetch(
-    "http://api.openweathermap.org/data/2.5/forecast?q=buenos aires&units=metric&appid=8a533d060297c7bd8f875f76c8583cf6"
+    "http://api.openweathermap.org/data/2.5/forecast?q=buenos aires&units=metric&appid="
   );
   const data = await response.json();
-  console.log(data);
   return data;
 });
 
@@ -26,6 +24,34 @@ const nodeSlice = createSlice({
       state.loading = true;
     });
     builder.addCase(getNode.fulfilled, (state, action) => {
+      // const currentDay = new Date().getDate() + 1;
+      // let arrayData = [{}];
+
+      // action.payload.list.forEach((element: any) => {
+      //   const dt_txt = element.dt_txt;
+      //   const temp_max = element.main.temp_max;
+      //   const temp_min = element.main.temp_min;
+      //   const temp = element.main.temp;
+      //   const weather = element.weather.main;
+
+      //   const day = new Date(element.dt_txt).getDate();
+
+      //   if (day === currentDay) {
+
+      // arrayData.push({
+      //   first: {
+      //     dt_txt,
+      //     temp_max,
+      //     temp_min,
+      //     temp,
+      //     weather,
+      //   },
+      // });
+      // }
+      // });
+
+      // console.log("arrayData: ", arrayData);
+
       state.data = action.payload;
       state.loading = false;
     });
