@@ -7,25 +7,26 @@ type Props = {
 };
 
 const WeatherNextDays: React.FC<Props> = (props: Props) => {
-//   if (props.weathers) {
-//     props.weathers.map((element: Array<Weather>) => {
-//       console.log("element");
-//       element.map((e: Weather) => console.log(e));
-//       return element;
-//     });
-//   }
-
   return (
-    <div>
-      {props.weathers.map((weathers: Array<Weather>) =>
-        weathers.map((weather: Weather) => (
-          <WeatherDetail
-            key={weather.id}
-            title={weather.dt_txt}
-            weather={weather}
-          />
-        ))
-      )}
+    <div className="container">
+      {props.weathers.map((weathers: Array<Weather>) => (
+        <div className="row justify-content-center border m-3 shadow-sm">
+          {weathers.map((weather: Weather) => (
+            <div
+              className="col-xl-3 col-lg-4 col-md-5 col-sm-6"
+              key={weather.dt_txt}
+            >
+              {
+                <WeatherDetail
+                  key={weather.dt_txt}
+                  title={weather.dt_txt}
+                  weather={weather}
+                />
+              }
+            </div>
+          ))}
+        </div>
+      ))}
     </div>
   );
 };

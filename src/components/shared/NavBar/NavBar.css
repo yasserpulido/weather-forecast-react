@@ -1,3 +1,26 @@
 header {
   background-color: #f1c40f;
 }
+
+.nav-links > a {
+  text-decoration: none;
+  padding: 0.5rem;
+  color: #485460;
+}
+
+.nav-links > a:hover {
+  text-decoration: none;
+  padding: 0.5rem;
+  color: #1e272e;
+}
+
+.nav-links--active {
+  color: #1e272e !important;
+}
+
+.brand {
+  color: #000000;
+  font-weight: bold;
+  font-size: 1.2rem;
+  text-decoration: none;
+}

@@ -1,33 +1,24 @@
-import React, { useEffect } from "react";
-import "./App.css";
-import { useAppDispatch, useAppSelector } from "./store/configureStore";
-import { getNextDays, getToday, selectNode } from "./reducers/weather";
-import Card from "./components/UI/Card";
 import NavBar from "./components/shared/NavBar/NavBar";
 import Footer from "./components/shared/Footer/Footer";
-import WeatherDetail from "./components/weather/WeatherDetail";
-import WeatherNextDays from "./components/weather/WeatherNextDays";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Jumbotron from "./components/UI/jumbotron/Jumbotron";
+import Weather from "./pages/Weather";
+import NotFound from "./pages/NotFound";
 
 function App() {
-  const dispatch = useAppDispatch();
-  const weather = useAppSelector(selectNode);
-
-  useEffect(() => {
-    dispatch(getToday());
-    dispatch(getNextDays());
-  }, [dispatch]);
-
-  if (weather.loading) return <p>Loading...</p>;
-
   return (
-    <React.Fragment>
+    <BrowserRouter>
       <NavBar />
       <main>
-        <WeatherDetail title="Today" weather={weather.today} />
-        <WeatherNextDays weathers={weather.nextDays} />
+        <Routes>
+          <Route path="/" element={<Jumbotron />} />
+          <Route path="/weather" element={<Weather />} />
+          <Route path="/weather/lat=:lat&lon=:lon" element={<Weather />} />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
       </main>
       <Footer />
-    </React.Fragment>
+    </BrowserRouter>
   );
 }
 

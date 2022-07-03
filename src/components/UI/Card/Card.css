@@ -1,0 +1,69 @@
+.card-weather {
+  margin: 1em auto;
+  background: #ecf0f1;
+  padding: 2em 0;
+  width: 250px;
+  height: 250px;
+  border-radius: 3px;
+  box-shadow: 0px 1px 7px rgba(0, 0, 0, 0.25);
+}
+
+.card-weather > h1 {
+  font-size: 1.5em;
+  text-align: center;
+}
+
+.card-weather--today {
+  margin: 1em auto;
+  background: #3498db;
+  padding: 2em 0;
+  width: 300px;
+  border-radius: 3px;
+  box-shadow: 0px 1px 7px rgba(0, 0, 0, 0.25);
+}
+
+.card-weather--today > h1 {
+  font-size: 2em;
+  text-align: center;
+}
+
+.card-weather:hover,
+.card-weather--today:hover {
+  box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.5);
+}
+
+.card-weather--today > .temp {
+  font-size: 7em;
+  line-height: 1;
+  text-align: center;
+  display: block;
+  padding-left: 30px;
+  margin-bottom: 24px;
+}
+
+.card-weather > .temp {
+  font-size: 5em;
+  line-height: 1;
+  text-align: center;
+  display: block;
+  padding-left: 30px;
+  margin-bottom: 24px;
+}
+
+.high-low {
+  font-size: 2em;
+  color: lighten(#313e48, 20%);
+  text-align: center;
+  display: block;
+  font-weight: 100;
+}
+
+.date-time > h1 {
+  font-size: 1.5em;
+  text-align: center;
+}
+
+.date-time > h2 {
+  font-size: 1em;
+  text-align: center;
+}
