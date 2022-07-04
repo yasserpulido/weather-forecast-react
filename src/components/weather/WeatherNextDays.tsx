@@ -10,7 +10,10 @@ const WeatherNextDays: React.FC<Props> = (props: Props) => {
   return (
     <div className="container">
       {props.weathers.map((weathers: Array<Weather>) => (
-        <div className="row justify-content-center border m-3 shadow-sm">
+        <div
+          className="row justify-content-center border m-3 shadow-sm"
+          key={weathers[0].dt_txt}
+        >
           {weathers.map((weather: Weather) => (
             <div
               className="col-xl-3 col-lg-4 col-md-5 col-sm-6"

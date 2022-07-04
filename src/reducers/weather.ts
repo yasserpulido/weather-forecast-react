@@ -13,7 +13,7 @@ export const getToday = createAsyncThunk(
   "weather/getToday",
   async (params: any) => {
     const response = await fetch(
-      `https://api.openweathermap.org/data/2.5/weather?lat=${params.lat}&lon=${params.lon}&appid=8a533d060297c7bd8f875f76c8583cf6&units=metric`
+      `${process.env.REACT_APP_OPEN_WEATHER_MAP_URL}/weather?lat=${params.lat}&lon=${params.lon}&appid=${process.env.REACT_APP_OPEN_WEATHER_MAP_KEY}&units=metric`
     );
     const data = await response.json();
     return data;
@@ -24,7 +24,7 @@ export const getNextDays = createAsyncThunk(
   "weather/getNextDays",
   async (params: any) => {
     const response = await fetch(
-      `http://api.openweathermap.org/data/2.5/forecast?lat=${params.lat}&lon=${params.lon}&appid=8a533d060297c7bd8f875f76c8583cf6&units=metric`
+      `${process.env.REACT_APP_OPEN_WEATHER_MAP_URL}/forecast?lat=${params.lat}&lon=${params.lon}&appid=${process.env.REACT_APP_OPEN_WEATHER_MAP_KEY}&units=metric`
     );
     const data = await response.json();
     return data;
