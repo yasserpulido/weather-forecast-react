@@ -9,6 +9,10 @@ type Props = {
 };
 
 const WeatherDetail: React.FC<Props> = (props: Props) => {
+  const temp = Math.floor(props.weather.main?.temp);
+  const tempMax = Math.floor(props.weather.main?.temp_max);
+  const tempMin = Math.floor(props.weather.main?.temp_min);
+
   const formatHandler = (title: string, isDate: boolean) => {
     if (isDate) {
       return format(new Date(title), "PP");
@@ -20,17 +24,16 @@ const WeatherDetail: React.FC<Props> = (props: Props) => {
   return (
     <Card className={props.title === "Today" ? "today-weather" : ""}>
       {props.title === "Today" ? (
-        <h1>{props.title}</h1>
+        <h1 data-testid="title">{props.title}</h1>
       ) : (
         <span className="date-time">
-          <h1>{formatHandler(props.title, true)}</h1>
-          <h2>{formatHandler(props.title, false)}</h2>
+          <h1 data-testid="date-title">{formatHandler(props.title, true)}</h1>
+          <h2 data-testid="time-title">{formatHandler(props.title, false)}</h2>
         </span>
       )}
-      <span className="temp">{props.weather.main?.temp.toFixed(0)}&deg;</span>
+      <span className="temp">{temp}&deg;</span>
       <span className="high-low">
-        {props.weather.main?.temp_min.toFixed(0)}&deg;/{" "}
-        {props.weather.main?.temp_max.toFixed(0)}&deg;
+        {tempMin}&deg; / {tempMax}&deg;
       </span>
     </Card>
   );

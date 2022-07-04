@@ -5,12 +5,6 @@ export interface Weather {
     temp_min: number;
     temp_max: number;
   };
-  weather: [
-    {
-      id: number;
-      main: string;
-    }
-  ];
   id: number;
   name: string;
 }
